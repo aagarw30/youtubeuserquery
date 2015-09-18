@@ -1,15 +1,23 @@
 library(shiny)
-library(shinyjs)
+
 shinyUI(fluidPage(
-  titlePanel("Hello"),
+  titlePanel("Demo app to take user input and perform operation and finally display the results"),
   sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "x", label = "Select", choices = c("A", "B"))
-      ),
+      helpText("Enter the values in the following boxes to perform operation on them"),
+      textInput(inputId = "value1", "Enter the first value", value = ""),
+      br(),
+      textInput(inputId = "value2", "Enter the second value", value = ""),
+      br(),
+      textInput(inputId = "value3", "Enter the third value", value = ""),
+      br()
+      
+    ),
     mainPanel(
-      tabsetPanel(type = "tab", tabPanel("tab A"), tabPanel("tab b"))
-      )
+      textOutput("values"),
+      tableOutput("valuestable"),
+      textOutput("sum")
     )
-  
-  
-  ))
+    
+  )
+))
